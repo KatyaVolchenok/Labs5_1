@@ -37,11 +37,10 @@ public class Method {
         }
     }
     
-    private static class Ln {
-        double eval(double x) {
+    public static  double eval(double x) {
             return Math.log(x * x * x) - 2;
         }
-    }   
+     
 
    public static void main(String[] args) {
        
@@ -51,29 +50,34 @@ public class Method {
             }
         };
         System.out.println("");
-        System.out.println("Реализация интерфеса с помощью вложенного класса: ");
+        System.out.println("Реализация интерфеса с помощью анонимного класса: ");
         System.out.println(meth(f1, 0.01, 2, EPS));
+        System.out.println("____________________________________________________________");
                 
         Function f2 = new Func();
         System.out.println("");
-        System.out.println("Реализация интерфеса с помощью анонимного класса: ");
+        System.out.println("Реализация интерфеса с помощью вложенного класса: ");
         System.out.println(meth(f2, 2, 3, EPS));
+        System.out.println("____________________________________________________________");
         
         Function f3 = Math::tan;
         System.out.println("");
         System.out.println("Реализация интерфеса с помощью ссылки на статический метод: ");
         System.out.println(meth(f3, 2, 4, EPS));
+        System.out.println("____________________________________________________________");
         
-        Ln ln = new Ln();
-        Function f4 = ln::eval;
+        
+        Function f4 = Method::eval;
         System.out.println("");
         System.out.println("Реализация интерфеса с помощью ссылки на метод экземпляра: ");
         System.out.println(meth(f4, 1, 3, EPS));
+        System.out.println("____________________________________________________________");
         
         Function f5 = x -> x*x*x - 8*x + 2;
         System.out.println("");
         System.out.println("Реализация интерфейса с помощью лямбда-выражения: ");
         System.out.println(meth(f5, 1, 5, EPS));
+        System.out.println("____________________________________________________________");
    }
 }
     
